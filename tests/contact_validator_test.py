@@ -20,6 +20,11 @@ def test_is_valid_email_type_error():
         is_valid_email(12345)
 
 
+def test_is_valid_email_false():
+    """Test that an email without a domain suffix is rejected."""
+    assert is_valid_email("student@example") == False
+
+
 def test_is_valid_phone_true():
     """Test a well-formed phone number with dashes."""
     # Arrange
