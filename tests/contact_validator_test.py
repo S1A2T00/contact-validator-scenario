@@ -49,7 +49,21 @@ def test_mask_email_basic():
     assert result == "pr***@example.com"
 
 
+def test_mask_email_short_local_part():
+    assert mask_email("a@example.com") == "a@example.com"
+
+
 def test_mask_email_invalid():
     with pytest.raises(ValueError):
         mask_email("not-an-email")
+
+
+def test_normalize_phone():
+    """Test removing dashes from a valid phone number."""
+    assert normalize_phone("555-123-4567") == "5551234567"
+
+
+def test_normalize_phone_invalid():
+    with pytest.raises(ValueError):
+        normalize_phone("123")
 
